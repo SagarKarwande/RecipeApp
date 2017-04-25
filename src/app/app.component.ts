@@ -1,3 +1,6 @@
+import { ShoppingListAddComponent } from './shopping-list/shopping-list-add.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { HeaderComponent } from './header.component';
 import { Component } from '@angular/core';
 
 @Component({

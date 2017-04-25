@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "ng": "./node_modules/@angular/cli/bin/ng",
+    "start": "ng serve -H 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "build--prod": "ng lint && ng build --prod --no-sourcemap --stats-json",
+    "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -35,12 +37,15 @@
     "karma": "~1.4.1",
     "karma-chrome-launcher": "~2.0.0",
     "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "lite-server": "^2.3.0",
+    "live-server": "^1.2.0",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
-  }
+  },
+  "main": "index.js"
 }
