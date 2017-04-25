@@ -1,2 +1,2 @@
-import { RecipeService } from './recipe.service';
-import { RecipesComponent } from './recipes.component';
+export { RecipeService } from './recipe.service';
+export { RecipesComponent } from './recipes.component';
