@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-5">
-        <rb-recipes-list (recipeSelected)="selectedRecipe = $event"></rb-recipes-list>
+        <rb-recipes-list></rb-recipes-list>
     </div>
     <div class="col-md-7">
-        <rb-recipe-detail [selectedRecipe]="selectedRecipe"></rb-recipe-detail>
+        <router-outlet></router-outlet>
     </div>
 </div>
