@@ -29,7 +29,7 @@ export class ShoppingListAddComponent implements OnChanges {
       this.onClear();
     } else {
       this.item = newIngredient;
-      this.sls.addItem(this.item)
+      this.sls.addItem(this.item);
     }
   }
 

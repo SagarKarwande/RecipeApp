@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/Rx';
 export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   @Input() selectedRecipe: Recipe;
-  private recipeIndex: number = 1;
+  private recipeIndex = 1;
   private subscription: Subscription;
 
   constructor(private sls: ShoppingListService,

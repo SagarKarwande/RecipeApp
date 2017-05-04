@@ -54,7 +54,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     let recipeName = '';
     let recipeImageUrl = '';
     let recipeContent = '';
-    let recipeIngredients: FormArray = new FormArray([]);
+    const recipeIngredients: FormArray = new FormArray([]);
 
     if (!this.isNew) {
       for (let i = 0; i < this.recipe.ingredients.length; i++) {

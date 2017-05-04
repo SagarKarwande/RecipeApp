@@ -47,5 +47,7 @@
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "repository": "https://github.com/SagarKarwande/RecipeApp.git",
+  "author": "Sagar Karwande <sagar_karwande123@yahoo.com>"
 }

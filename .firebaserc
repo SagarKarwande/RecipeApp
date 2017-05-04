@@ -1,5 +1,6 @@
 {
   "projects": {
-    "testing": "recipe-app-s"
+    "testing": "recipe-app-s",
+    "default": "recipe-app-s"
   }
 }

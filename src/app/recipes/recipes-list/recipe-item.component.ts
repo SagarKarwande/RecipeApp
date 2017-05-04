@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class RecipeItemComponent {
 
   @Input() recipe: Recipe;
-  @Input() recipeId: number = 1;
+  @Input() recipeId = 1;
 }
