@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { AppState } from './../reducers/reducers';
 import { Ingredient } from './../shared/ingredient';
 import { Recipe } from './recipe';
 import { Injectable, EventEmitter } from '@angular/core';
@@ -9,15 +12,20 @@ export class RecipeService {
 
   recipesChanged = new EventEmitter<Recipe[]>();
 
-  recipes: Recipe[] = [
-    new Recipe('Schnitzel', 'Very tasty', 'http://www.bavariankitchen.com/images/recipes/wiener_schnitzel2.jpg', [
-      new Ingredient('French Fries', 2),
-      new Ingredient('Pork Meat', 1)
-    ]),
-    new Recipe('Summer Salad', 'Okayish', 'http://ohmyveggies.com/wp-content/uploads/2013/06/the_perfect_summer_salad.jpg', []),
-  ];
+  recipes: Recipe[] = [];
+  recipes$: Observable<Recipe[]>;
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private appState: Store<AppState>
+  ) {
+    this.recipes$ = this.appState.select('recipes');
+    this.recipes$.subscribe((
+      (recipes) => {
+        this.recipes = recipes;
+      }
+    ));
+  }
 
   getRecipes() {
     return this.recipes;
@@ -49,10 +57,6 @@ export class RecipeService {
 
   fetchData() {
     return this.http.get('https://recipe-app-s.firebaseio.com/recipes.json')
-      .map((response: Response) => response.json())
-      .subscribe((data: Recipe[]) => {
-        this.recipes = data;
-        this.recipesChanged.emit(this.recipes);
-      });
+      .map((response: Response) => response.json());
   }
 }

@@ -1,3 +1,6 @@
+import { RecipeEffects } from './effects/recipe.effects';
+import { Effect } from '@ngrx/effects';
+import { RecipeActions } from './actions/recipe';
 import { RecipeService } from './recipes/recipe.service';
 import { routing } from './app.routes';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
@@ -17,6 +20,10 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { DropdownDirective } from './dropdown.directive';
 import { RecipeStartComponent } from './recipes/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import reducer from './reducers/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -37,9 +44,17 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     FormsModule,
     HttpModule,
     routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.provideStore(reducer),
+     StoreDevtoolsModule.instrumentStore({
+      maxAge: 5
+    }),
+    EffectsModule.run(RecipeEffects)
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    RecipeActions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
